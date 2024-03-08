@@ -14,6 +14,12 @@
     <left>左对齐</left>
     <center>居中</center>
     <right>右对齐</right>
+
+<style>
+  body {
+    background-image: url('背景图片地址.jpg');
+</style>
+
 <ul>
 <li><a href="jn.html">江南</a></li>
 <li>列表2</li>
