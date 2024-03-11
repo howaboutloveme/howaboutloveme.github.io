@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Download File Example</title>
+</head>
+<body>
+    <h1>Download File Example</h1>
+    <a href="path/to/your/file.pdf" download="your_file.pdf">Download File</a>
+</body>
+</html>
