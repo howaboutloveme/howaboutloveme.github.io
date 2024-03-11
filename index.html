@@ -20,7 +20,7 @@ body {
             position: relative;
         }
 </style>
-<center><small><pstyle="color:#D8BFD8">直到我们不再见面 我才体会到什么是永远.</p></small>
+<center><small><pstyle="color:#FFA500">直到我们不再见面 我才体会到什么是永远.</p></small>
 
 <body onload="showTime()">
     <div id="datetime"></div>
@@ -29,7 +29,7 @@ body {
         function showTime(){
             var date = new Date(); //获取当前时间
             document.getElementById('datetime').innerHTML=date.toLocaleString();//将时间显示在页面上
-color: ##FFA500;
+
             setTimeout(function(){ //每秒钟更新一次时间
                 showTime();
             },1000);  
