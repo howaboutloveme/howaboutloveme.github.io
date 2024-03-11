@@ -22,6 +22,20 @@ body {
 </style>
 <center><small><pstyle="color:#D8BFD8">直到我们不再见面 我才体会到什么是永远.</p></small></center>
 
+<body onload="showTime()">
+    <div id="datetime"></div>
+
+    <script type="text/javascript">
+        function showTime(){
+            var date = new Date(); //获取当前时间
+            document.getElementById('datetime').innerHTML=date.toLocaleString();//将时间显示在页面上
+
+            setTimeout(function(){ //每秒钟更新一次时间
+                showTime();
+            },1000);  
+        }
+    </script>
+
     <center><em><h1 style="color:#708090">欢迎来到<br/><b>JMbedminton club</em></b></h1></center></b>
 
 <b><u><center><p style="color:#708090">QQ1275226033<br/>微信ypj080516</u></br></center></p>
