@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>文件上传示例</title>
+    <script>
+        function uploadFile() {
+            var fileInput = document.getElementById("fileUpload");
+            var file = fileInput.files[0];
+            var formData = new FormData();
+            formData.append("file", file);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/upload", true);
+            xhr.onload = function () {
+                if (this.status === 200) {
+                    alert("文件上传成功!");
+                } else {
+                    alert("文件上传失败：" + this.statusText);
+                }
+            };
+            xhr.send(formData);
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <label for="fileUpload">选择文件：</label>
+        <input type="file" id="fileUpload" name="file">
+        <input type="button" value="上传文件" onclick="uploadFile()">
+    </form>
+</body>
+</html>
