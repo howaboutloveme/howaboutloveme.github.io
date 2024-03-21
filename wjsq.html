@@ -1,32 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>文件上传示例</title>
-    <script>
-        function uploadFile() {
-            var fileInput = document.getElementById("fileUpload");
-            var file = fileInput.files[0];
-            var formData = new FormData();
-            formData.append("file", file);
-
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "/upload", true);
-            xhr.onload = function () {
-                if (this.status === 200) {
-                    alert("文件上传成功!");
-                } else {
-                    alert("文件上传失败：" + this.statusText);
-                }
-            };
-            xhr.send(formData);
-        }
-    </script>
-</head>
 <body>
-    <form>
-        <label for="fileUpload">选择文件：</label>
-        <input type="file" id="fileUpload" name="file">
-        <input type="button" value="上传文件" onclick="uploadFile()">
-    </form>
+
+<form action="upload.php" method="post" enctype="multipart/form-data">
+  选择文件: <input type="file" name="uploadFile"><br>
+  存放路径: <input type="text" name="path" id="b" onclick="showpath()"><br>
+  需写上文件名: <br>
+  上传: <input type="submit" value="上传" name="submit"><br>
+</form>
+
+<script>
+function showpath(){
+    var path = document.getElementById('b').value;
+    if(path != ''){
+        document.getElementById('spath').innerHTML = '当前路径为：'+path;
+    }else{
+        document.getElementById('spath').innerHTML = '';
+    }
+}
+</script>
+
 </body>
 </html>
+ 
