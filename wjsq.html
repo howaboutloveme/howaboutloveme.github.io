@@ -1,32 +1,21 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>记事本</title>
-</head>
-<body>
-    <textarea id="note" rows="10" cols="50"></textarea>
-    <button onclick="saveNote()">保存到1.txt</button>
-
+    <title>文本框和保存按钮示例</title>
     <script>
-        function saveNote() {
-            var noteText = document.getElementById('note').value;
-            var blob = new Blob([noteText], { type: 'text/plain' });
-            var fileName = '1.txt';
-
-            // 创建可下载的链接
-            var link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = fileName;
-
-            // 触发下载
-            document.body.appendChild(link);
-            link.click();
-
-            // 清理临时URL
-            document.body.removeChild(link);
-            URL.revokeObjectURL(link.href);
+        function saveText() {
+            var text = document.getElementById("textbox").value;
+            var file = new Blob([text], {type: "text/plain"});
+            var url = URL.createObjectURL(file);
+            var a = document.createElement("a");
+            a.href = url;
+            a.download = "1.txt";
+            a.click();
         }
     </script>
+</head>
+<body>
+    <input type="text" id="textbox">
+    <button onclick="saveText()">保存</button>
 </body>
 </html>
