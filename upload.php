@@ -1,5 +1,5 @@
 <?php
-$target_dir = "uploads/"; // 目标文件夹路径
+$target_dir = "1/"; // 目标文件夹路径
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
