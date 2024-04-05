@@ -1,21 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>文本框和保存按钮示例</title>
-    <script>
-        function saveText() {
-            var text = document.getElementById("textbox").value;
-            var file = new Blob([text], {type: "text/plain"});
-            var url = URL.createObjectURL(file);
-            var a = document.createElement("a");
-            a.href = url;
-            a.download = "1.txt";
-            a.click();
-        }
-    </script>
+    <meta charset="UTF-8">
+    <title>文件上传</title>
 </head>
 <body>
-    <input type="text" id="textbox">
-    <button onclick="saveText()">保存</button>
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+        选择文件:
+        <input type="file" name="fileToUpload" id="fileToUpload">
+        <input type="submit" value="上传文件" name="submit">
+    </form>
 </body>
 </html>
