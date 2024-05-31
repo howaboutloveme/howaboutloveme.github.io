@@ -4,6 +4,10 @@
 <meta name="viewport"content="width=device-width,initial-scale=1.0"> 
     <meta charset="UTF-8">
     <title>我的世界MC荣耀网站</title>
+<style>
+        body {            height: 2000px; /* 为了让页面足够长，以便滚动 */            margin: 0;            padding: 0;        }        #backToTop {            position: fixed;            bottom: 20px;            right: 20px;            width: 60px;            height: 60px;            border-radius: 50%;            background-color: #333;            color: white;            text-align: center;            line-height: 60px;            cursor: pointer;            display: none; /* 初始隐藏按钮 */        }        
+
+#backToTop span {            font-size: 24px;        }    </style>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -87,6 +91,11 @@
             <p></p>
         </section>
     </div>
-
+      <!-- 悬浮返回顶部按钮 -->    
+<div id="backToTop">        
+<span>首页</span>    
+</div>    
+<script>        // JavaScript代码        document.getElementById('backToTop').addEventListener('click', function() {            window.scrollTo({ top: 0, behavior: 'smooth' }); // 平滑滚动到页面顶部        });        // 监听页面滚动事件，显示或隐藏返回顶部按钮        window.addEventListener('scroll', function() {            var backToTop = document.getElementById('backToTop');            if (window.pageYOffset > 200) {                backToTop.style.display = 'block'; // 当滚动超过200像素时显示按钮            } else {                backToTop.style.display = 'none'; // 否则隐藏按钮            }        });    
+</script>
 </body>
 </html>
