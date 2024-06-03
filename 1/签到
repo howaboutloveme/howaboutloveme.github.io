@@ -1,23 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>预约界面</title>
+    <script src="js/1.js"></script>
+    <meta charset="utf-8" />
+<meta name="viewport"content="width=device-width,initial-scale=1.0"> 
+    <title>jmbadminton club</title>
 </head>
 <body>
-    <div id="counterContainer">
-        <p>预约数量: <span id="counter">0</span></p>
-        <button id="reserveButton">预约</button>
-    </div>
 
-    <!-- JavaScript脚本将在页面底部加载，以避免阻塞页面渲染 -->
-    <script src="reserve.js"></script>
+
+<style>
+body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('img/1.jpg') no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            position: relative;
+        }
+</style>
+<center><small><pstyle="color:#FFA500">直到我们不再见面 我才体会到什么是永远.</p></small>
+
+<body onload="showTime()">
+    <div id="datetime"></div>
+
+    <script type="text/javascript">
+        function showTime(){
+            var date = new Date(); //获取当前时间
+            document.getElementById('datetime').innerHTML=date.toLocaleString();//将时间显示在页面上
+
+            setTimeout(function(){ //每秒钟更新一次时间
+                showTime();
+            },1000);  
+        }
+    </script></center>
+
+    <center><em><h1 style="color:#708090">欢迎来到<br/><b>JMbedminton club</em></b></h1></center></b>
+
+<b><u><center><p style="color:#708090">QQ1275226033<br/>微信ypj080516</u></br></center></p>
+
+<b><u><center><h2 style="color:#708090">emo了？<a href="wa.html">前往文案馆(˵¯͒〰¯͒˵)</a>每天都要开心喔～～</u></br></center></h2>
+
+<b><u><center><h2 style="color:#708090">可以前往<a href="1.html">下一页听歌🎶</a>喔～～</u></br></center></h2></b>
+</center>
+
+<hr/>
+
+<b><u><center><h2 style="color:#708090">点击这个<a href="qd.html">前往签到</a>(⋟﹏⋞)</u></br></center></h2>
+
+<hr/>
+
+<hr/>
+<center><h3 style="color:#708090">
+觉得内容不够？向站长投稿(˃ ⌑ ˂ഃ )<br/>
+投稿地址jmbedminton@qq.com
+</center></h3>
+<hr/>
+
+<b><u><center><h2 style="color:#708090">点击这个<a href="wjsq.html">上传文件</a>(⋟﹏⋞)</u></br></center></h2>
+
 </body>
 </html>
-
-// reserve.js
-document.getElementById('reserveButton').addEventListener('click', function() {
-    var counter = document.getElementById('counter');
-    var currentCount = parseInt(counter.textContent);
-    counter.textContent = currentCount + 1;
-});
