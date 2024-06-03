@@ -10,9 +10,54 @@
         <button id="reserveButton">预约</button>
     </div>
 
-    <!-- JavaScript脚本将在页面底部加载，以避免阻塞页面渲染 -->
-    <script src="jsq.js"></script>
+    <!-- 引入您的JavaScript文件 -->
+    <script src="js/reserve.js"></script>
 </body>
 </html>
 
+// 获取DOM元素
+var reserveButton = document.getElementById('reserveButton');
+var counterElement = document.getElementById('counter');
+
+// 页面加载时获取当前的预约数量
+window.onload = function() {
+    getReservationCount();
+};
+
+// 增加预约数量
+reserveButton.addEventListener('click', function() {
+    increaseReservationCount();
+});
+
+// 发送GET请求获取预约数量
+function getReservationCount() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/api/reservations', true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var data = JSON.parse(xhr.responseText);
+            updateCounterDisplay(data.count);
+        }
+    };
+    xhr.send();
+}
+
+// 发送POST请求增加预约数量
+function increaseReservationCount() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/api/reservations', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var data = JSON.parse(xhr.responseText);
+            updateCounterDisplay(data.count);
+        }
+    };
+    xhr.send();
+}
+
+// 更新页面上的预约数量显示
+function updateCounterDisplay(count) {
+    counterElement.textContent = count;
+}
 
