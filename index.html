@@ -61,3 +61,58 @@ function updateCounterDisplay(count) {
     counterElement.textContent = count;
 }
 
+
+
+
+<template>
+  <div>
+    <h1>预约服务</h1>
+    <form @submit.prevent="handleSubmit">
+      <label>
+        姓名:
+        <input type="text" v-model="formData.name" required />
+      </label>
+      <label>
+        邮箱:
+        <input type="email" v-model="formData.email" required />
+      </label>
+      <label>
+        预约时间:
+        <input type="datetime-local" v-model="formData.time" required />
+      </label>
+      <button type="submit">预约</button>
+    </form>
+  </div>
+</template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      formData: {
+        name: '',
+        email: '',
+        time: ''
+      }
+    };
+  },
+  methods: {
+    handleSubmit() {
+      axios.post('/api/appointments', this.formData)
+        .then(response => {
+          // 处理预约成功的逻辑
+        })
+        .catch(error => {
+          // 处理错误的逻辑
+        });
+    }
+  }
+};
+</script>
+
+<style scoped>
+/* 添加样式 */
+</style>
+
