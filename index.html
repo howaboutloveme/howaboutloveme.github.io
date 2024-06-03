@@ -63,56 +63,43 @@ function updateCounterDisplay(count) {
 
 
 
-
-<template>
-  <div>
-    <h1>预约服务</h1>
-    <form @submit.prevent="handleSubmit">
-      <label>
-        姓名:
-        <input type="text" v-model="formData.name" required />
-      </label>
-      <label>
-        邮箱:
-        <input type="email" v-model="formData.email" required />
-      </label>
-      <label>
-        预约时间:
-        <input type="datetime-local" v-model="formData.time" required />
-      </label>
-      <button type="submit">预约</button>
-    </form>
-  </div>
-</template>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>预约页面</title>
 <script>
-import axios from 'axios';
+// 假设我们有一个函数用来从服务器获取当前预约数量
+function getCurrentReservationCount() {
+    // 这里应该是异步请求服务器获取预约数的代码，例如使用fetch API
+    return 5; // 假设初始预约数是5
+}
 
-export default {
-  data() {
-    return {
-      formData: {
-        name: '',
-        email: '',
-        time: ''
-      }
-    };
-  },
-  methods: {
-    handleSubmit() {
-      axios.post('/api/appointments', this.formData)
-        .then(response => {
-          // 处理预约成功的逻辑
-        })
-        .catch(error => {
-          // 处理错误的逻辑
-        });
-    }
-  }
+// 假设我们有一个函数用来更新服务器上的预约数量
+function updateReservationCount(newCount) {
+    // 这里应该是异步请求服务器更新预约数的代码，例如使用fetch API
+    console.log("预约数更新为：" + newCount);
+}
+
+window.onload = function() {
+    // 页面加载完毕后获取当前的预约数量
+    document.getElementById('reservation-count').textContent = getCurrentReservationCount();
 };
+
+function incrementReservation() {
+    var currentCount = parseInt(document.getElementById('reservation-count').textContent, 10);
+    if (!isNaN(currentCount)) {
+        var newCount = currentCount + 1;
+        document.getElementById('reservation-count').textContent = newCount;
+        updateReservationCount(newCount); // 更新服务器上的预约数
+    }
+}
 </script>
-
-<style scoped>
-/* 添加样式 */
-</style>
-
+</head>
+<body>
+<h1>预约页面</h1>
+<p>当前预约数量： <span id="reservation-count">?</span></p>
+<button onclick="incrementReservation()">增加预约</button>
+</body>
+</html>
