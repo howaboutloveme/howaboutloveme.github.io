@@ -1,108 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>预约界面</title>
+    <script src="js/1.js"></script>
+    <meta charset="utf-8" />
+<meta name="viewport"content="width=device-width,initial-scale=1.0"> 
+    <title>jmbadminton club</title>
 </head>
 <body>
-    <div id="counterContainer">
-        <p>预约数量: <span id="counter">0</span></p>
-        <button id="reserveButton">预约</button>
-    </div>
 
-    <!-- 引入您的JavaScript文件 -->
-    <script src="js/reserve.js"></script>
+
+<style>
+body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('img/1.jpg') no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            position: relative;
+        }
+</style>
+<center><small><pstyle="color:#FFA500">直到我们不再见面 我才体会到什么是永远.</p></small>
+
+<body onload="showTime()">
+    <div id="datetime"></div>
+
+    <script type="text/javascript">
+        function showTime(){
+            var date = new Date(); //获取当前时间
+            document.getElementById('datetime').innerHTML=date.toLocaleString();//将时间显示在页面上
+
+            setTimeout(function(){ //每秒钟更新一次时间
+                showTime();
+            },1000);  
+        }
+    </script></center>
+
+    <center><em><h1 style="color:#708090">欢迎来到<br/><b>JMbedminton club</em></b></h1></center></b>
+
+<b><u><center><p style="color:#708090">QQ1275226033<br/>微信ypj080516</u></br></center></p>
+
+<b><u><center><h2 style="color:#708090">emo了？<a href="wa.html">前往文案馆(˵¯͒〰¯͒˵)</a>每天都要开心喔～～</u></br></center></h2>
+
+<b><u><center><h2 style="color:#708090">可以前往<a href="1.html">下一页听歌🎶</a>喔～～</u></br></center></h2></b>
+</center>
+
+<hr/>
+
+<b><u><center><h2 style="color:#708090">点击这个<a href="qd.html">前往签到</a>(⋟﹏⋞)</u></br></center></h2>
+
+<hr/>
+
+<hr/>
+<center><h3 style="color:#708090">
+觉得内容不够？向站长投稿(˃ ⌑ ˂ഃ )<br/>
+投稿地址jmbedminton@qq.com
+</center></h3>
+<hr/>
+
+<b><u><center><h2 style="color:#708090">点击这个<a href="wjsq.html">上传文件</a>(⋟﹏⋞)</u></br></center></h2>
+
 </body>
 </html>
-
-// 获取DOM元素
-var reserveButton = document.getElementById('reserveButton');
-var counterElement = document.getElementById('counter');
-
-// 页面加载时获取当前的预约数量
-window.onload = function() {
-    getReservationCount();
-};
-
-// 增加预约数量
-reserveButton.addEventListener('click', function() {
-    increaseReservationCount();
-});
-
-// 发送GET请求获取预约数量
-function getReservationCount() {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/api/reservations', true);
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            var data = JSON.parse(xhr.responseText);
-            updateCounterDisplay(data.count);
-        }
-    };
-    xhr.send();
-}
-
-// 发送POST请求增加预约数量
-function increaseReservationCount() {
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/api/reservations', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            var data = JSON.parse(xhr.responseText);
-            updateCounterDisplay(data.count);
-        }
-    };
-    xhr.send();
-}
-
-// 更新页面上的预约数量显示
-function updateCounterDisplay(count) {
-    counterElement.textContent = count;
-}
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>预约页面</title>
-<script>
-// 假设我们有一个函数用来从服务器获取当前预约数量
-function getCurrentReservationCount() {
-    // 这里应该是异步请求服务器获取预约数的代码，例如使用fetch API
-    return 5; // 假设初始预约数是5
-}
-
-// 假设我们有一个函数用来更新服务器上的预约数量
-function updateReservationCount(newCount) {
-    // 这里应该是异步请求服务器更新预约数的代码，例如使用fetch API
-    console.log("预约数更新为：" + newCount);
-}
-
-window.onload = function() {
-    // 页面加载完毕后获取当前的预约数量
-    document.getElementById('reservation-count').textContent = getCurrentReservationCount();
-};
-
-function incrementReservation() {
-    var currentCount = parseInt(document.getElementById('reservation-count').textContent, 10);
-    if (!isNaN(currentCount)) {
-        var newCount = currentCount + 1;
-        document.getElementById('reservation-count').textContent = newCount;
-        updateReservationCount(newCount); // 更新服务器上的预约数
-    }
-}
-</script>
-</head>
-<body>
-<h1>预约页面</h1>
-<p>当前预约数量： <span id="reservation-count">?</span></p>
-<button onclick="incrementReservation()">增加预约</button>
-</body>
-</html>
-
-
-点击链接加入群聊【<$ÿĀ">《荣耀》官方交流群<$ÿĀ><$ÿĀ>华夏制作】：http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=yA1GUjtjqBe6p992RDc8AZEcftXCYWR0&authKey=hOV2mxUUG%2FUrHAuL6y0tCLjq%2B5CXQceK3srP%2FDUhnEPPqv%2Bn%2BvNo%2BK3tyf%2FDL7iF&noverify=0&group_code=693700376
