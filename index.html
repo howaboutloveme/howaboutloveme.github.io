@@ -76,52 +76,76 @@ body {
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scoreboard.DisplaySlot;
-import org.bukkit.scoreboard.Objective;
-import org.bukkit.scoreboard.Scoreboard;
-import org.bukkit.scoreboard.Team;
+import org.bukkit.scoreboard.*;
 
-public class CatScoreboardPlugin extends JavaPlugin implements Listener {
+import java.util.HashMap;
+import java.util.Map;
+
+public class CatPlanetScoreboard extends JavaPlugin implements Listener {
 
     private Scoreboard board;
     private Objective obj;
-    private Team team;
+    private Map<String, Team> teams = new HashMap<>();
+    private String title;
+    private String content;
 
     @Override
     public void onEnable() {
         saveDefaultConfig();
-        reloadConfig();
-        board = Bukkit.getScoreboardManager().getNewScoreboard();
-        obj = board.registerNewObjective("catPlanet", "dummy");
-        obj.setDisplaySlot(DisplaySlot.SIDEBAR);
-        obj.setDisplayName(getConfig().getString("scoreboard.title", "猫猫星球")); // 默认标题为“猫猫星球”
-
-        team = board.registerNewTeam("teamWelcome");
-        team.setPrefix(getConfig().getString("scoreboard.content", "欢迎游玩")); // 默认内容为“欢迎游玩”
-
-        getServer().getPluginManager().registerEvents(this, this);
-    }
-
-    @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event) {
-        team.addEntry(event.getPlayer().getName());
-        event.getPlayer().setScoreboard(board);
+        reloadConfig(); // Load initial config
+        setupScoreboard();
+        Bukkit.getPluginManager().registerEvents(this, this);
     }
 
     @Override
     public void onDisable() {
         // Cleanup if necessary
     }
+
+    private void setupScoreboard() {
+        board = Bukkit.getScoreboardManager().getNewScoreboard();
+        obj = board.registerNewObjective("catPlanet", "dummy");
+        obj.setDisplaySlot(DisplaySlot.SIDEBAR);
+        obj.setDisplayName(title); // Use the title from the config
+
+        Team team = board.registerNewTeam("teamWelcome");
+        team.setPrefix(content); // Use the content from the config
+
+        teams.put("teamWelcome", team);
+
+        Bukkit.getOnlinePlayers().forEach(player -> {
+            team.addEntry(player.getName());
+            player.setScoreboard(board);
+        });
+    }
+
+    @EventHandler
+    public void onCommandPreprocess(PlayerCommandPreprocessEvent event) {
+        String command = event.getMessage().toLowerCase();
+        if (command.startsWith("/lmcboard reload")) {
+            reloadConfig();
+            setupScoreboard();
+            event.getPlayer().sendMessage(ChatColor.GREEN + "计分板配置已重载！");
+            event.setCancelled(true); // Prevent the command from being processed further
+        }
+    }
+
+    private void reloadConfig() {
+        this.title = getConfig().getString("scoreboard.title", "猫猫星球");
+        this.content = getConfig().getString("scoreboard.content", "欢迎游玩");
+    }
 }
 ```
 
-### 第四步：配置文件
+### 第二步：配置文件
 
-在插件的`config.yml`文件中添加以下内容：
+在插件的根目录下创建`config.yml`文件，用于存储计分板的标题和内容。
 
 ```yaml
 scoreboard:
