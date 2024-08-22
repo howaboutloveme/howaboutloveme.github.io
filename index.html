@@ -65,3 +65,65 @@ body {
 </body>
 </html>
 
+
+
+
+
+
+
+
+
+
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scoreboard.DisplaySlot;
+import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.Team;
+
+public class CatScoreboardPlugin extends JavaPlugin implements Listener {
+
+    private Scoreboard board;
+    private Objective obj;
+    private Team team;
+
+    @Override
+    public void onEnable() {
+        saveDefaultConfig();
+        reloadConfig();
+        board = Bukkit.getScoreboardManager().getNewScoreboard();
+        obj = board.registerNewObjective("catPlanet", "dummy");
+        obj.setDisplaySlot(DisplaySlot.SIDEBAR);
+        obj.setDisplayName(getConfig().getString("scoreboard.title", "猫猫星球")); // 默认标题为“猫猫星球”
+
+        team = board.registerNewTeam("teamWelcome");
+        team.setPrefix(getConfig().getString("scoreboard.content", "欢迎游玩")); // 默认内容为“欢迎游玩”
+
+        getServer().getPluginManager().registerEvents(this, this);
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        team.addEntry(event.getPlayer().getName());
+        event.getPlayer().setScoreboard(board);
+    }
+
+    @Override
+    public void onDisable() {
+        // Cleanup if necessary
+    }
+}
+```
+
+### 第四步：配置文件
+
+在插件的`config.yml`文件中添加以下内容：
+
+```yaml
+scoreboard:
+  title: "猫猫星球"
+  content: "欢迎游玩"
