@@ -73,78 +73,68 @@ body {
 
 
 
-
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scoreboard.*;
 
-import java.util.logging.Level;
+import java.lang.reflect.Field;
+import java.util.List;
 
-public class Lmcboard extends JavaPlugin implements Listener {
-
-    private String scoreboardTitle;
-    private String scoreboardContent;
+public class CatPlanetScoreboard extends JavaPlugin {
+    private ScoreboardManager scoreboardManager;
+    private Scoreboard scoreboard;
+    private Objective objective;
 
     @Override
     public void onEnable() {
-        // 加载配置文件
-        reloadConfig();
-        parseConfig();
-        
-        // 注册事件监听器
-        getServer().getPluginManager().registerEvents(this, this);
-        
-        // 设置计分板
-        setupScoreboardForAllPlayers();
+        saveDefaultConfig();
+        registerCustomCommand();
+        updateScoreboard();
     }
 
-    @Override
-    public void onDisable() {
-        // 插件被禁用时的处理
-    }
-
-    private void setupScoreboardForAllPlayers() {
-        for (Player player : Bukkit.getOnlinePlayers()) {
-            setupScoreboard(player);
+    private void registerCustomCommand() {
+        try {
+            Field commandMapField = Bukkit.getServer().getClass().getDeclaredField("commandMap");
+            commandMapField.setAccessible(true);
+            CommandMap commandMap = (CommandMap) commandMapField.get(Bukkit.getServer());
+            commandMap.register("lmcboard", new ReloadCommand());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
-    private void setupScoreboard(Player player) {
-        // 这里设置计分板，使用scoreboardTitle和scoreboardContent
-        // 示例代码，需要根据你的计分板库进行修改
-        // player.setScoreboard(/*...*/);
+    private void updateScoreboard() {
+        scoreboardManager = Bukkit.getScoreboardManager();
+        scoreboard = scoreboardManager.getNewScoreboard();
+        objective = scoreboard.registerNewObjective("CatPlanetObjective", "dummy");
+        objective.setDisplayName(getConfig().getString("title", "猫猫星球"));
+        objective.setDisplaySlot(DisplaySlot.SIDEBAR);
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            player.setScoreboard(scoreboard);
+        }
     }
 
-    private void parseConfig() {
-        scoreboardTitle = getConfig().getString("scoreboard.title", "猫猫星球");
-        scoreboardContent = getConfig().getString("scoreboard.content", "欢迎游玩");
-    }
-    
-    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-    public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event) {
-        String command = event.getMessage().toLowerCase();
-        if (command.startsWith("/lmcboard reload")) {
-            getServer().getScheduler().runTask(this, this::reloadConfig);
-            event.getPlayer().sendMessage(ChatColor.GREEN + "计分板配置已重载！");
-            setupScoreboardForAllPlayers();
-            event.setCancelled(true);
+    private class ReloadCommand implements CommandExecutor {
+        @Override
+        public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+            if (args.length > 0 && args[0].equalsIgnoreCase("reload")) {
+                reloadConfig();
+                getServer().getScheduler().runTask(CatPlanetScoreboard.this, this::updateScoreboard);
+                sender.sendMessage("插件配置已重载，计分板已更新。");
+            }
+            return true;
         }
     }
 }
 ```
 
-### 步骤2: 创建配置文件
-
-创建一个`config.yml`文件，用于存储计分板的标题和内容。在插件的`onEnable`方法中加载和解析这个配置文件。
-
+### 配置文件 `config.yml`
 ```yaml
-# config.yml
-scoreboard:
-  title: 猫猫星球
-  content: 欢迎游玩
+# 计分板的标题和内容
+title: 猫猫星球
+content: 欢迎游玩
