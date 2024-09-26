@@ -4,19 +4,31 @@
 <meta name="viewport"content="width=device-width,initial-scale=1.0"> 
 <style>
 
-  .jbt {
-    height: 20px; /* 设置渐变条的高度 */
+.jbt {
+    height: 50px; /* 设置渐变条的高度 */
     width: 100%; /* 设置渐变条的宽度为100% */
     background: 
-      linear-gradient(to right, 
+      linear-gradient(90deg, 
         purple, 
         blue, 
         darkblue, 
         lightblue, 
         white, 
         yellow, 
-        green
+        green,
+        transparent
       );
+    background-size: 400% 100%; /* 增加背景大小，以创建动画效果 */
+    animation: Gradient 5s ease infinite; /* 添加动画 */
+  }
+  
+  @keyframes Gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 400% 50%;
+    }
 
 .mbl
 {
