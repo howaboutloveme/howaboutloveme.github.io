@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Words Moving Inward</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        
+        .word {
+            position: absolute;
+            transition: transform 1s ease-in-out;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        #word-left {
+            left: -100px;
+        }
+        
+        #word-right {
+            right: -100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="word-left" class="word">单词1</div>
+    <div id="word-right" class="word">单词2</div>
+    
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            const wordLeft = document.getElementById('word-left');
+            const wordRight = document.getElementById('word-right');
+        
+            // 动画开始时的延迟，可调整以获得不同的效果
+            setTimeout(() => {
+                wordLeft.style.transform = 'translateX(0)';
+            }, 500); // 延迟500毫秒开始动画
+            
+            setTimeout(() => {
+                wordRight.style.transform = 'translateX(0)';
+            }, 500); // 同样的延迟
+        });
+    </script>
+</body>
+</html>
