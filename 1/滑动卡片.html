@@ -9,26 +9,22 @@
             width: 300px;
             height: 200px;
             background-color: #f0f0f0;
-            border-radius: 10px;
             position: absolute;
-            top: -200px; /* 开始时卡片在屏幕之外 */
-            transition: transform 0.5s ease-out;
-        }
-        .card.show {
-            transform: translateY(0);
+            top: -100%; /* 初始位置在屏幕顶部之外 */
+            transition: top 0.5s ease-out; /* 0.5秒的过渡动画效果 */
         }
     </style>
 </head>
 <body>
-    <button id="showCard">显示卡片</button>
-    <div class="card" id="myCard">
+    <button id="slideDown">显示卡片</button>
+    <div class="card" id="card">
         <h2>欢迎</h2>
         <p>这是一个从上到下滑动的卡片。</p>
     </div>
     <script>
-        document.getElementById('showCard').addEventListener('click', function() {
-            const card = document.getElementById('myCard');
-            card.classList.add('show');
+        document.getElementById('slideDown').addEventListener('click', function() {
+            const card = document.getElementById('card');
+            card.style.top = '0'; // 改变卡片位置到屏幕顶部
         });
     </script>
 </body>
