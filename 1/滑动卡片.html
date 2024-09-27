@@ -1,40 +1,60 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>卡片滑动动画</title>
+    <title>Card Slideshow Animation</title>
     <style>
-        /* 添加一些基本的样式 */
         .card {
             width: 300px;
+            height: 200px;
             background-color: #f0f0f0;
             border-radius: 10px;
+            margin: 20px;
+            position: relative;
             overflow: hidden;
-            transition: transform 0.5s ease;
+            transition: transform 0.5s ease-out;
         }
-        .card.slidedown {
+        .card.hidden {
             transform: translateY(-100%);
+        }
+        .card.current {
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <div class="card">
-        <!-- 卡片内容 -->
-        <h2>卡片标题</h2>
-        <p>这里是卡片内容...</p>
+    <div id="cardContainer">
+        <div class="card" id="card1">
+            <h2>Card 1</h2>
+            <p>Content for Card 1...</p>
+        </div>
+        <div class="card" id="card2" class="hidden">
+            <h2>Card 2</h2>
+            <p>Content for Card 2...</p>
+        </div>
+        <!-- Add more cards as needed -->
     </div>
-    <button id="slideButton">点击滑动卡片</button>
+    <button id="nextCard">Next Card</button>
 
     <script>
-        // 获取按钮和卡片元素
-        const slideButton = document.getElementById('slideButton');
-        const card = document.querySelector('.card');
+        const cards = document.querySelectorAll('.card');
+        const nextCardButton = document.querySelector('#nextCard');
+        let currentCardIndex = 0;
 
-        // 添加点击事件监听器
-        slideButton.addEventListener('click', function() {
-            // 给卡片添加滑动类
-            card.classList.add('slidedown');
+        function showNextCard() {
+            const currentCard = cards[currentCardIndex];
+            currentCard.classList.remove('current');
+            currentCard.classList.add('hidden');
+
+            currentCardIndex = (currentCardIndex + 1) % cards.length;
+            const nextCard = cards[currentCardIndex];
+            nextCard.classList.remove('hidden');
+            nextCard.classList.add('current');
+        }
+
+        nextCardButton.addEventListener('click', () => {
+            showNextCard();
         });
     </script>
 </body>
