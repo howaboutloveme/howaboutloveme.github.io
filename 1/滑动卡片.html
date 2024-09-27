@@ -3,37 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>自动滑动卡片</title>
+    <title>卡片滑动动画</title>
     <style>
-        /* 基础样式 */
+        /* 添加一些基本的样式 */
         .card {
             width: 300px;
-            height: 200px;
-            margin: 50px auto;
-            padding: 20px;
             background-color: #f0f0f0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-            position: relative;
-
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.5s ease;
         }
-
-        /* 动画定义 */
-        @keyframes slideDown {
-            from {
-                transform: translateY(-50px);
-            }
-            to {
-                transform: translateY(0);
-            }
+        .card.slidedown {
+            transform: translateY(-100%);
         }
     </style>
 </head>
 <body>
     <div class="card">
-        <h2>标题</h2>
-        <p>这是一个加载后自动向下平滑滑动的卡片。</p>
+        <!-- 卡片内容 -->
+        <h2>卡片标题</h2>
+        <p>这里是卡片内容...</p>
     </div>
+    <button id="slideButton">点击滑动卡片</button>
+
+    <script>
+        // 获取按钮和卡片元素
+        const slideButton = document.getElementById('slideButton');
+        const card = document.querySelector('.card');
+
+        // 添加点击事件监听器
+        slideButton.addEventListener('click', function() {
+            // 给卡片添加滑动类
+            card.classList.add('slidedown');
+        });
+    </script>
 </body>
 </html>
