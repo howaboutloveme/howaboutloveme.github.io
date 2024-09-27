@@ -22,8 +22,11 @@
 
 .jbt {
 
-    height: 8px; /* 设置渐变条的高度 */
-    width: 400%; /* 设置渐变条的宽度为*/
+    height: 5px; /* 设置渐变条的高度 */
+    width: 100vw; /* 设置渐变条的宽度为视口宽度 */
+    position: relative; /* 使元素可以相对于其正常位置定位 */
+    left: 50%; /* 向左移动50% */
+    transform: translateX(-50%); /* 再次向左移动50%自身宽度，实现居中效果 */
     background: 
       linear-gradient(90deg, 
         purple, 
