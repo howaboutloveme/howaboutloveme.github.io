@@ -1,0 +1,30 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+}
+
+.text {
+    position: absolute;
+    transition: transform 1s ease-in-out;
+}
+
+.left {
+    left: -100px;
+}
+
+.right {
+    right: -100px;
+}
+
+.skyblock {
+    display: inline-block;
+}
