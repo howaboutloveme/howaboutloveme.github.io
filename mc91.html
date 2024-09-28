@@ -11,7 +11,31 @@
     <link href="css" rel="stylesheet" type="text/css">
     <!-- 内嵌样式 -->
     <style type="text/css">
-        #title h1, body,h2{font-weight: 400; color: #eee}
+        #title h1, body,h2{
+         content:center;
+         width: 8em;
+            /* 加上两个动画，一个是打字动画，使用steps让字一个一个的出现，
+             注意step和字数保持一致，光标动画也是同理，*/
+            animation: typingWords 5s steps(12) 1, cursor 0.5s steps(1) infinite;
+            /* 要设置不允许换行，且溢出隐藏 */
+            white-space: nowrap;
+            overflow: hidden;
+            /* 使用右边框作为打印的指针光标 */
+            border-right: 1px solid #000;
+        }
+
+        @keyframes typingWords {
+            0% {
+                width: 0;
+            }
+        }
+
+        @keyframes cursor {
+            50% {
+                border-color: transparent;
+            }
+        }
+        }
         a{color:white}
         .divide, .outer {position: absolute; width: 100%}
         #title h1, .trifecta, p {text-align: center}
@@ -36,12 +60,14 @@
     </style>
   <style>
   nav {
+            text-decoration: none;
             display: flex;
             text-align: right;
             background: #101010;
             padding: 15px 0;
         }
         .hdright {
+                  text-decoration: none;
           text-align:right;
             margin: 0 20px;
             text-decoration: none;
@@ -81,7 +107,7 @@
 <body>
     <!-- 导航栏 -->
     <nav>
-        <img src="img91.png" width="40" height="30">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <img src="img91.png" width="40" height="30">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
         <a class="hdcolor"class="hdhight"href="">首页</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
         <a class="hdhight"href="">团队</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
         <a class="hdhight"href="">项目</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
