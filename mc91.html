@@ -3,7 +3,7 @@
 <html lang="en-US">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport"content="width=device-width,initial-scale=1.0">
+    
     <!-- 禁止搜索引擎索引和抓取 -->
     <meta name="robots" content="noindex, nofollow">
     <title>SkyBlock</title>
@@ -11,42 +11,30 @@
     <link href="css" rel="stylesheet" type="text/css">
     <!-- 内嵌样式 -->
     <style type="text/css">
-        #title h1, body,h2{
-         content:center;
-         width: 8em;
-            /* 加上两个动画，一个是打字动画，使用steps让字一个一个的出现，
-             注意step和字数保持一致，光标动画也是同理，*/
-            animation: typingWords 5s steps(12) 1, cursor 0.5s steps(1) infinite;
-            /* 要设置不允许换行，且溢出隐藏 */
-            white-space: nowrap;
-            overflow: hidden;
-            /* 使用右边框作为打印的指针光标 */
-            border-right: 1px solid #000;
-        }
-
-        @keyframes typingWords {
-            0% {
-                width: 0;
-            }
-        }
-
-        @keyframes cursor {
-            50% {
-                border-color: transparent;
-            }
-        }
-        }
-        a{color:white}
+        #title h1, body {font-weight: 400; color: #eee}
         .divide, .outer {position: absolute; width: 100%}
         #title h1, .trifecta, p {text-align: center}
-        body, html {margin: 0; padding: 0; height: 100%}
+        body, html {
+         animation: fadeInAnimation ease 3s; 
+            animation-iteration-count: 1; /*设置动画播放次数*/
+            animation-fill-mode: forwards; /*设置样式以在动画不播放时应用元素。forward是设置动画结束后，使用元素的结束属性值*/
+        } 
+        @keyframes fadeInAnimation { 
+            0% { 
+                opacity: 0; /*设置不透明度*/
+            } 
+            100% { 
+                opacity: 1; 
+            } 
+         margin: 0; padding: 0; height: 100%
+        }
+       .hdcolor {color: #6cc312}
         body {font-family: Raleway, Helvetica Neue, Helvetica, sans-serif; font-size: 14px; background-color: #101010}
         p {font-size: 1.75em; color: #ddd; margin: 10px 0 0}
         .divide {top: 0; padding: 0; margin: 0; background: 线性渐变颜色; height: 3px; border-bottom: 1px solid #000}
         .trifecta .one, .trifecta .two, .trifecta>div {background-color: #eee}
         #title h1 {margin: 0 auto; padding: 0; font-size: 62pt; height: 120px}
         #title span {color: #6cc312}
-        .hdcolor {color: #6cc312}
         .outer {display: table; height: 100%}
         .middle {display: table-cell; vertical-align: middle}
         .inner {margin-left: auto; margin-right: auto; width: 400px}
@@ -58,24 +46,20 @@
         @-webkit-keyframes bdelay {0%, 100%, 80% {-webkit-transform: scale(0)} 40% {-webkit-transform: scale(1)}}
         @keyframes bdelay {0%, 100%, 80% {-webkit-transform: scale(0); transform: scale(0)} 40% {transform: scale(1); -webkit-transform: scale(1)}}
     </style>
-  <style>
-  nav {
-            text-decoration: none;
+    <!-- JavaScript代码 -->
+    <script type="text/javascript">
+        .dh {
             display: flex;
             text-align: right;
             background: #101010;
             padding: 15px 0;
         }
         .hdright {
-                  text-decoration: none;
-          text-align:right;
+            text-decoration: none;
             margin: 0 20px;
             text-decoration: none;
             color: white;
         }
-  </style>
-    <!-- JavaScript代码 -->
-    <script type="text/javascript">
 
         //<![CDATA[
         (function(){
@@ -106,7 +90,7 @@
 </head>
 <body>
     <!-- 导航栏 -->
-    <nav>
+    <nav class="dh">
         <img src="img91.png" width="40" height="30">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
         <a class="hdcolor"class="hdhight"href="">首页</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
         <a class="hdhight"href="">团队</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -124,14 +108,13 @@
             <div class="inner">
                 <!-- 标题 -->
                 <div id="title">
-                  
-                    <h1>SKY<span>BLOCK</span></h1>
+                    <h1>sky<span>block</span></h1>
                 </div>
                 <!-- 针对禁用JS的提示 -->
                 <noscript><h1 data-translate="turn_on_js" style="color:#bd2426;">请开启JavaScript并重新加载页面。</h1></noscript>
                 <!-- 内容区域 -->
                 <div id="gs-content" style="display: block;">
-                    <p>关于我们...</p>
+                    <p>这里是一些描述。。。</p>
                     <!-- 动画元素 -->
                     <div class="trifecta">
                         <div class="one"></div>
@@ -147,6 +130,4 @@
                 </div>
             </div>
 </body>
-<script src="https://api.vvhan.com/api/script/snow">
-<script src="https://api.vvhan.com/api/ipCard"></script>
-</html>
+     </html>
