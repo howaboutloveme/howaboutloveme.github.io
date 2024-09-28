@@ -1,69 +1,122 @@
-﻿<!DOCTYPE html>
-<html>
-        <head>
-
-<meta name="viewport"content="width=device-width,initial-scale=1.0"> 
-<title>mc91 skyblock</title>
-<style>
-          .jbt {
-
-    height: 5px; /* 设置渐变条的高度 */
-    width: 100vw; /* 设置渐变条的宽度为视口宽度 */
-    position: relative; /* 使元素可以相对于其正常位置定位 */
-    left: 50%; /* 向左移动50% */
-    transform: translateX(-50%); /* 再次向左移动50%自身宽度，实现居中效果 */
-    background: 
-      linear-gradient(90deg, 
-        purple, 
-        blue, 
-        darkblue, 
-        lightblue, 
-        white, 
-        yellow, 
-        green,
-        transparent
-      );}
-  body {
-    background-color: #101010; /* 设置背景颜色为黑色 */
-    color: white;            /* 设置文本颜色为白色，以提高可读性 */
-  }
-
-
-        nav {
+<!DOCTYPE html>
+<!-- 保存的网址：https://gamesense.pub/forums/index.php -->
+<html lang="en-US">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"content="width=device-width,initial-scale=1.0">
+    <!-- 禁止搜索引擎索引和抓取 -->
+    <meta name="robots" content="noindex, nofollow">
+    <title>SkyBlock</title>
+    <!-- 引入CSS文件 -->
+    <link href="css" rel="stylesheet" type="text/css">
+    <!-- 内嵌样式 -->
+    <style type="text/css">
+        #title h1, body,h2{font-weight: 400; color: #eee}
+        a{color:white}
+        .divide, .outer {position: absolute; width: 100%}
+        #title h1, .trifecta, p {text-align: center}
+        body, html {margin: 0; padding: 0; height: 100%}
+        body {font-family: Raleway, Helvetica Neue, Helvetica, sans-serif; font-size: 14px; background-color: #101010}
+        p {font-size: 1.75em; color: #ddd; margin: 10px 0 0}
+        .divide {top: 0; padding: 0; margin: 0; background: 线性渐变颜色; height: 3px; border-bottom: 1px solid #000}
+        .trifecta .one, .trifecta .two, .trifecta>div {background-color: #eee}
+        #title h1 {margin: 0 auto; padding: 0; font-size: 62pt; height: 120px}
+        #title span {color: #6cc312}
+        .hdcolor {color: #6cc312}
+        .outer {display: table; height: 100%}
+        .middle {display: table-cell; vertical-align: middle}
+        .inner {margin-left: auto; margin-right: auto; width: 400px}
+        .trifecta {margin: 0 auto; font-size: 26px; width: 80px}
+        .trifecta>div {display: inline-block; width: 14px; height: 14px; border-radius: 100%; -webkit-animation: bdelay 1.4s infinite ease-in-out both; animation: bdelay 1.4s infinite ease-in-out both}
+        .trifecta .one {-webkit-animation-delay: -.32s; animation-delay: -.32s}
+        .trifecta .two {-webkit-animation-delay: -.16s; animation-delay: -.16s}
+        /* 动画关键帧 */
+        @-webkit-keyframes bdelay {0%, 100%, 80% {-webkit-transform: scale(0)} 40% {-webkit-transform: scale(1)}}
+        @keyframes bdelay {0%, 100%, 80% {-webkit-transform: scale(0); transform: scale(0)} 40% {transform: scale(1); -webkit-transform: scale(1)}}
+    </style>
+  <style>
+  nav {
             display: flex;
             text-align: right;
-            justify-content: center;
             background: #101010;
             padding: 15px 0;
         }
-        nav a {
+        .hdright {
+          text-align:right;
             margin: 0 20px;
             text-decoration: none;
             color: white;
+        }
+  </style>
+    <!-- JavaScript代码 -->
+    <script type="text/javascript">
 
-
-
-
-                </style>        
-        </head>
-        <body>
-<div class="jbt"></div>
-
+        //<![CDATA[
+        (function(){
+            // 检查浏览器是否支持addEventListener
+            var a = function() {try{return !!window.addEventListener} catch(e) {return !1} },
+            // 为文档添加事件监听器或事件处理程序
+            b = function(b, c) {a() ? document.addEventListener("DOMContentLoaded", b, c) : document.attachEvent("onreadystatechange", b)};
+            // 当文档加载完成时的函数
+            b(function(){
+                var d = new Date();
+                d.setTime(d.getTime() + (30000));
+                // 设置cookie
+                document.cookie = "bypass=1; expires=" + d.toUTCString() + "; path=/";
+                // 显示内容
+                var a = document.getElementById('gs-content');a.style.display = 'block';
+                // 延迟执行
+                setTimeout(function(){
+                    // 更多的JavaScript代码...
+                    // 这部分代码涉及一些加密和DOM操作，用于处理网页的某些部分，例如设置链接、处理表单等
+                }, 4000);
+            }, false);
+        })();
+        //]]>
+        
+        // 更多的JavaScript代码
+        // 这里可以写更多的JavaScript代码来处理网页的其他功能
+    </script>
+</head>
+<body>
+    <!-- 导航栏 -->
     <nav>
-<img src="img91.png"width="40"height="30">
-        <a href="">首页</a>
-<a href="">团队</a>
-<a href="">项目</a>
-        <a href="">联系我们</a>
+        <img src="img91.png" width="40" height="30">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <a class="hdcolor"class="hdhight"href="">首页</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <a class="hdhight"href="">团队</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <a class="hdhight"href="">项目</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <a class="hdhight"href="">联系我们</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
     </nav>
-
-
-
-
-
-
-<script src="https://api.vvhan.com/api/script/snow">
-<script src="https://api.vvhan.com/api/ipCard"></script>
-        </body>
-
-</html>
+    
+    <!-- 分割线 -->
+    <div class="divide"></div>
+    <!-- 外层容器 -->
+    <div class="outer">
+        <!-- 中间层，用于垂直居中 -->
+        <div class="middle">
+            <!-- 内层容器 -->
+            <div class="inner">
+                <!-- 标题 -->
+                <div id="title">
+                  
+                    <h1>SKY<span>BLOCK</span></h1>
+                </div>
+                <!-- 针对禁用JS的提示 -->
+                <noscript><h1 data-translate="turn_on_js" style="color:#bd2426;">请开启JavaScript并重新加载页面。</h1></noscript>
+                <!-- 内容区域 -->
+                <div id="gs-content" style="display: block;">
+                    <p>关于我们...</p>
+                    <!-- 动画元素 -->
+                    <div class="trifecta">
+                        <div class="one"></div>
+                        <div class="two"></div>
+                        <div class="three"></div>
+                    </div>
+                    <!-- 表单 -->
+                    <form id="challenge-form" action="" method="get">
+                        <input type="hidden" name="pc" value="48845be78c1ed4b7b6446dd22f5c022e">
+                        <input type="hidden" name="pass" value="1727369312.879-3WU4LwM">
+                        <input type="hidden" id="answer" name="answer" value="406865.8503923155">
+                    </form>
+                </div>
+            </div>
